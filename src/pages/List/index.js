@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './style.css';
-import { getUsers } from '../service/localStorage';
+import { getUsers } from '../../service/localStorage';
 
 const List = () => {
   const [users, setUsers] = useState([]);
@@ -24,17 +24,17 @@ const List = () => {
             users?.map(user => (
 
               <li key={user.document}>
-                <strong>Nome completo:</strong>
+                <strong>Nome completo</strong>
                 <p>{`${user.firstName} ${user.lastName}`}</p>
 
-                <strong>CPF:</strong>
+                <strong>CPF</strong>
                 <p>{user.document}</p>
 
-                <strong>Data de nascimento:</strong>
+                <strong>Data de nascimento</strong>
                 <p>{user.birthday}</p>
 
-                <strong>Endereço:</strong>
-                <p>{`${user.address}, ${user.addressNumber} - ${user.city}/${user.state} - ${user.postalCode}`}</p>
+                <strong>Endereço</strong>
+                <p>{`${user.address}, ${user.numberAddress}${user.complement ? `/${user.complement}` : ''} - ${user.city}/${user.state} - ${user.postalCode}`}</p>
               </li>
 
             ))

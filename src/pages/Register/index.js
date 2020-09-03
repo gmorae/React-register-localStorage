@@ -4,7 +4,8 @@ import { FiArrowLeft } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 
 import './style.css';
-import { setUsers } from '../service/localStorage';
+import { setUsers, getUsers } from '../../service/localStorage';
+import { verifyDocument } from '../../utils/verifyDocument';
 
 const Register = () => {
   const [firstName, setFirstName] = useState('');
@@ -34,9 +35,13 @@ const Register = () => {
       state,
       city
     }
-    setUsers(data);
-    toast.success('Cadastro realizado com sucesso')
-    history.push('/')
+    if(verifyDocument(data.document)) {
+      setUsers(data);
+      toast.success('Cadastro realizado com sucesso')
+      history.push('/')
+    } else {
+      toast.error('O CPF já está sendo usado, entre com outro CPF !')
+    }
   }
 
   return (
@@ -137,7 +142,6 @@ const Register = () => {
               <input
                 name="complement"
                 value={complement}
-                required
                 onChange={e => setComplement(e.target.value)}
               />
             </div>
