@@ -4,7 +4,7 @@
   --color-background: #f0f0f5;
   --color-green: #04d361;
   --color-red: #e83f5b;
-  --color-white: #FFF;
+  --color-white: #fff;
   --color-primary: #8257e6;
   --color-primary-hover: #9466ff;
   --color-secondary: #e1e1e6;
@@ -46,4 +46,35 @@ body {
 
 .button:hover {
   background: var(--color-primary-hover);
+}
+
+.input-block + .input-block {
+  margin-top: 14px;
+}
+
+.input-block label {
+  font-size: 14px;
+}
+
+.input-block input {
+  width: 100%;
+  height: 56px;
+  margin-top: 8px;
+  border-radius: 8px;
+  background: var(--color-secondary);
+  border: 1px solid var(--color-white);
+  outline: 0;
+  padding: 0 16px;
+  font: 16px Roboto;
+}
+
+.input-group .input-block + .input-block {
+  margin-top: 0 !important;
+}
+
+.input-group {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
 }

@@ -1,0 +1,74 @@
+.register-container {
+  width: 95%;
+  margin: 32px auto;
+}
+
+.register-container a {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  color: #41414d;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2;
+  margin-bottom: 16px;
+}
+
+.register-container a svg {
+  margin-right: 8px;
+}
+
+.register-container a:hover {
+  opacity: 0.8;
+}
+
+.register-container form {
+  background: var(--color-white);
+  border-radius: 8px;
+  padding: 64px 24px 16px;
+}
+
+.register-container form h1 {
+  font: 700 32px Roboto;
+  color: var(--color-title);
+}
+
+.register-container form fieldset {
+  border: 0;
+  margin-top: 64px;
+}
+
+.register-container form fieldset legend {
+  font: 700 24px Roboto;
+  color: var(--color-title);
+  margin-bottom: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding-bottom: 16px;
+}
+
+.register-container form .btn {
+  margin-top: 16px;
+  width: 20%;
+}
+
+@media (max-width: 768px) {
+  .register-container form .btn {
+    width: 40%;
+  }
+}
+
+@media (max-width: 520px) {
+  .input-group {
+    grid-template-columns: 1fr !important;
+  }
+
+  .register-container form .btn {
+    width: 50%;
+  }
+}
