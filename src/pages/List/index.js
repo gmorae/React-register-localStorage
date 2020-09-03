@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './style.css';
+import { getUsers } from '../service/localStorage';
 
 const List = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    setUsers(getUsers())
+  }, [getUsers]);
+
   return (
     <section className="list-container">
       <header>
@@ -14,20 +21,20 @@ const List = () => {
       <main>
         <ul>
           {
-            [1, 2, 3, 4].map(item => (
+            users?.map(user => (
 
-              <li key={item}>
+              <li key={user.document}>
                 <strong>Nome completo:</strong>
-                <p>Gabriel Moraes Martins</p>
+                <p>{`${user.firstName} ${user.lastName}`}</p>
 
                 <strong>CPF:</strong>
-                <p>222.222.222-22</p>
+                <p>{user.document}</p>
 
                 <strong>Data de nascimento:</strong>
-                <p>19/04/2001</p>
+                <p>{user.birthday}</p>
 
                 <strong>Endereço:</strong>
-                <p>Estrada dos morros, 578 - São Paulo/SP - 07131-190</p>
+                <p>{`${user.address}, ${user.addressNumber} - ${user.city}/${user.state} - ${user.postalCode}`}</p>
               </li>
 
             ))

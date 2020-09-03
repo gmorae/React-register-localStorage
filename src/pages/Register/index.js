@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 
 import './style.css';
+import { setUsers } from '../service/localStorage';
 
 const Register = () => {
   const [firstName, setFirstName] = useState('');
@@ -16,8 +18,25 @@ const Register = () => {
   const [state, setState] = useState('');
   const [city, setCity] = useState('');
 
-  function handleRegisterUser() {
+  const history = useHistory();
 
+  function handleRegisterUser(e) {
+    e.preventDefault();
+    let data = {
+      firstName,
+      lastName,
+      document,
+      birthday,
+      postalCode,
+      address,
+      numberAddress,
+      complement,
+      state,
+      city
+    }
+    setUsers(data);
+    toast.success('Cadastro realizado com sucesso')
+    history.push('/')
   }
 
   return (
@@ -37,6 +56,7 @@ const Register = () => {
               <input
                 name="firstName"
                 value={firstName}
+                required
                 onChange={e => setFirstName(e.target.value)}
               />
             </div>
@@ -46,6 +66,7 @@ const Register = () => {
               <input
                 name="lastName"
                 value={lastName}
+                required
                 onChange={e => setLastName(e.target.value)}
               />
             </div>
@@ -57,6 +78,7 @@ const Register = () => {
               <input
                 name="document"
                 value={document}
+                required
                 onChange={e => setDocument(e.target.value)}
               />
             </div>
@@ -66,6 +88,7 @@ const Register = () => {
               <input
                 name="birthday"
                 value={birthday}
+                required
                 onChange={e => setBirthday(e.target.value)}
               />
             </div>
@@ -82,6 +105,7 @@ const Register = () => {
               <input
                 name="postalCode"
                 value={postalCode}
+                required
                 onChange={e => setPostalCode(e.target.value)}
               />
             </div>
@@ -91,6 +115,7 @@ const Register = () => {
               <input
                 name="address"
                 value={address}
+                required
                 onChange={e => setAddress(e.target.value)}
               />
             </div>
@@ -102,6 +127,7 @@ const Register = () => {
               <input
                 name="numberAddress"
                 value={numberAddress}
+                required
                 onChange={e => setNumberAddress(e.target.value)}
               />
             </div>
@@ -111,6 +137,7 @@ const Register = () => {
               <input
                 name="complement"
                 value={complement}
+                required
                 onChange={e => setComplement(e.target.value)}
               />
             </div>
@@ -122,6 +149,7 @@ const Register = () => {
               <input
                 name="state"
                 value={state}
+                required
                 onChange={e => setState(e.target.value)}
               />
             </div>
@@ -131,6 +159,7 @@ const Register = () => {
               <input
                 name="city"
                 value={city}
+                required
                 onChange={e => setCity(e.target.value)}
               />
             </div>
